@@ -3,9 +3,12 @@
 import { useRouter, usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import { useHeader } from './contexts/HeaderContext';
 
 export default function Header() {
+  const header = useHeader();
   const router = useRouter();
+
   const pathname = usePathname();
 
   const handleBack = () => {
@@ -31,6 +34,7 @@ export default function Header() {
             width={24}
             height={24}
           />
+          <Header />
         </Button>
       )}
     </header>

@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center h-full">
       <span className="text-sm text-gray-400 h-4">
-        No plan ? Anti plan!
+        No plan ? Anti plan !
       </span>
   
       <div className="flex flex-row-reverse relative h-40 gap-2 my-56">
