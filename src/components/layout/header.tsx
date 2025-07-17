@@ -1,15 +1,14 @@
 'use client';
 
+import Image from 'next/image';
 import { useRouter, usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import Image from 'next/image';
-// import { useHeader } from './contexts/HeaderContext';
+import { useHeader } from './contexts/HeaderContext';
 
 export default function Header() {
-  // const header = useHeader();
   const router = useRouter();
-
   const pathname = usePathname();
+  const { headerContent } = useHeader();
 
   const handleBack = () => {
     if (window.history.length > 1) {
@@ -36,6 +35,7 @@ export default function Header() {
           />
         </Button>
       )}
+      {headerContent}
     </header>
   );
 }
