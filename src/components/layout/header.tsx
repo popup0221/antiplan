@@ -3,10 +3,10 @@
 import { useRouter, usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
-import { useHeader } from './contexts/HeaderContext';
+// import { useHeader } from './contexts/HeaderContext';
 
 export default function Header() {
-  const header = useHeader();
+  // const header = useHeader();
   const router = useRouter();
 
   const pathname = usePathname();
@@ -20,7 +20,7 @@ export default function Header() {
   };
 
   return (
-    <header className="flex h-14 w-full items-center">
+    <header className="flex h-full w-full items-center">
       {pathname !== '/' && (
         <Button
           variant="ghost"
@@ -34,7 +34,6 @@ export default function Header() {
             width={24}
             height={24}
           />
-          <Header />
         </Button>
       )}
     </header>

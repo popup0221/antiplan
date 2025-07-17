@@ -8,12 +8,12 @@ export default function Home() {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col items-center h-full">
-      <span className="text-sm text-gray-400 h-4">
+    <div className="flex flex-col items-center h-full justify-between py-5">
+      <span className="text-sm text-gray-400">
         No plan ? Anti plan !
       </span>
   
-      <div className="flex flex-row-reverse relative h-40 gap-2 my-56">
+      <div className="flex flex-row-reverse relative h-40 gap-2">
         <span className="text-white text-xl font-semibold leading-relaxed text-start writing-vertical-rl text-orientation-mixed">
           계획없이 사는
         </span>
@@ -32,7 +32,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex h-14 mt-20 w-full items-center justify-center gap-3">
+      <div className="flex h-14 w-full items-center justify-center gap-3">
         <Button variant="ghost" onClick={() => router.push('/recommend')}>
           추천받기
         </Button>
