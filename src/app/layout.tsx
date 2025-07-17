@@ -26,11 +26,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="kr">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white h-screen w-screen`}>
         <HeaderProvider>
-          <div className="font-sans h-screen w-screen">
+          <div className="font-sans h-full w-full">
             <div className="h-[6%]">
-                <Header />
+              <Header />
             </div>
             <main className="p-4 w-full h-[94%]">
               {children}
