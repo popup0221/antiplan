@@ -19,7 +19,7 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed flex w-full items-center justify-between">
+    <header className="fixed flex w-full h-12 items-center justify-between">
       {pathname !== '/' && (
         <Button
           variant="ghost"
