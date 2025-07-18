@@ -15,7 +15,9 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true
+			"recommended": true,
+			"fsd-layer-imports/path-checker": "error",
+      "fsd-layer-imports/public-api-imports": "error"
 		}
 	},
 	"javascript": {
