@@ -1,7 +1,7 @@
 'use client'
 
 import { useFunnel } from "@use-funnel/next";
-import { useHeader } from "@/components/layout/contexts/HeaderContext";
+import { useHeader } from "../(contexts)/HeaderContext"; 
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";

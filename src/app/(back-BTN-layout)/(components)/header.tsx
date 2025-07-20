@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useRouter, usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { useHeader } from './contexts/HeaderContext';
+import { useHeader } from '../(contexts)/HeaderContext'; 
 
 export default function Header() {
   const router = useRouter();
