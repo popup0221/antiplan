@@ -6,7 +6,6 @@ import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { steps, alcohol } from "./literals";
-import { recommendFormSchema, type RecommendForm } from "./schemas";
 
 export default function Recommend() {
   const { setHeaderContent } = useHeader();
@@ -31,7 +30,6 @@ export default function Recommend() {
   // 각 단계별 폼
   return (
     <div>
-      
     </div>
   );
 }
