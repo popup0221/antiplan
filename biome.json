@@ -10,14 +10,17 @@
 	},
 	"formatter": {
 		"enabled": true,
-		"indentStyle": "tab"
+		"formatWithErrors": false,
+		"indentStyle": "space",
+		"indentWidth": 2,
+		"lineEnding": "lf",
+		"lineWidth": 120,
+		"attributePosition": "auto"
 	},
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true,
-			"fsd-layer-imports/path-checker": "error",
-      "fsd-layer-imports/public-api-imports": "error"
+			"recommended": true
 		}
 	},
 	"javascript": {
