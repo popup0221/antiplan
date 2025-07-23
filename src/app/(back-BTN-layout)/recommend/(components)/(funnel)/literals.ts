@@ -12,7 +12,7 @@ export const experience: Record<Experience, string> = {
   expert: "전문가",
 } as const;
 
-export const taste: Record<Taste, string> = {
+export const taste: Record<Taste[number], string> = {
   smoky: "스모키",
   spicy: "스파이시",
   fruity: "프루티",
