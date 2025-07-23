@@ -1,15 +1,10 @@
-import { z } from "zod";
+import { z } from 'zod';
 
-export const AlcoholSchema = z.enum(["whisky", "cocktail", "wine"]);
-export const ExperienceSchema = z.enum(["beginner", "intermediate", "expert"]);
-export const TasteSchema = z.enum([
-  "smoky",
-  "spicy",
-  "fruity",
-  "sweet",
-  "dry",
-  "floral",
-]);
+export const AlcoholSchema = z.enum(['whisky', 'cocktail', 'wine']);
+export const ExperienceSchema = z.enum(['beginner', 'intermediate', 'expert']);
+export const TasteSchema = z.array(
+  z.enum(['smoky', 'spicy', 'fruity', 'sweet', 'dry', 'floral'])
+);
 
 export const 주종선택_Schema = z.object({
   alcohol: AlcoholSchema.optional(),
@@ -42,4 +37,3 @@ export const 메모입력_Schema = z.object({
 export type Alcohol = z.infer<typeof AlcoholSchema>;
 export type Experience = z.infer<typeof ExperienceSchema>;
 export type Taste = z.infer<typeof TasteSchema>;
-

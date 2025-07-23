@@ -9,17 +9,19 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 interface Props {
-  onNext: (tastes: Taste[]) => void;
+  onNext: (tastes: Taste) => void;
 }
 
+type TasteValue = Taste[number];
+
 export default function TasteStep({ onNext }: Props) {
-  const [selectedTastes, setSelectedTastes] = useState<Taste[]>([]);
+  const [selectedTastes, setSelectedTastes] = useState<Taste>([]);
 
-  const tasteOptions = Object.entries(tasteLiterals) as [Taste, string][];
+  const tasteOptions = Object.entries(tasteLiterals) as [TasteValue, string][];
 
-  const handleToggleTaste = (taste: Taste) => {
+  const handleToggleTaste = (taste: TasteValue) => {
     setSelectedTastes((prev) =>
-      prev.includes(taste) ? prev.filter((t) => t !== taste) : [...prev, taste],
+      prev.includes(taste) ? prev.filter((t) => t !== taste) : [...prev, taste]
     );
   };
 
@@ -37,16 +39,27 @@ export default function TasteStep({ onNext }: Props) {
             htmlFor={value}
             className={cn(
               'flex h-24 cursor-pointer items-center justify-center rounded-md text-lg bg-primary hover:bg-accent hover:text-accent-foreground',
-              selectedTastes.includes(value) && 'border border-white text-primary-foreground hover:bg-primary/90',
+              selectedTastes.includes(value) &&
+                'border border-white text-primary-foreground hover:bg-primary/90'
             )}
           >
-            <Checkbox id={value} onCheckedChange={() => handleToggleTaste(value)} checked={selectedTastes.includes(value)} className="sr-only" />
+            <Checkbox
+              id={value}
+              onCheckedChange={() => handleToggleTaste(value)}
+              checked={selectedTastes.includes(value)}
+              className="sr-only"
+            />
             {label}
           </Label>
         ))}
       </div>
 
-      <Button className="relative bottom-0" size="lg" onClick={() => onNext(selectedTastes)} disabled={selectedTastes.length === 0}>
+      <Button
+        className="relative bottom-0"
+        size="lg"
+        onClick={() => onNext(selectedTastes)}
+        disabled={selectedTastes.length === 0}
+      >
         다음
       </Button>
     </div>

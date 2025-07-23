@@ -1,11 +1,12 @@
 'use client';
 
-import { useFunnel } from "@use-funnel/browser";
-import type { 주종선택, 경험선택, 맛선택, 메모입력 } from "./context";
-import { 경험선택_Schema, 맛선택_Schema, 메모입력_Schema, 주종선택_Schema } from "./schemas";
-import AlcoholStep from "./AlcoholStep";
-import ExperienceStep from "./ExperienceStep";
-import TasteStep from "./TasteStep";
+import { useFunnel } from '@use-funnel/browser';
+import type { 주종선택, 경험선택, 맛선택, 메모입력 } from './context';
+import { 경험선택_Schema, 맛선택_Schema, 메모입력_Schema, 주종선택_Schema } from './schemas';
+import AlcoholStep from './AlcoholStep';
+import ExperienceStep from './ExperienceStep';
+import TasteStep from './TasteStep';
+import MemoStep from './MemoStep';
 
 export default function Funnel() {
   const funnel = useFunnel<{
@@ -27,14 +28,23 @@ export default function Funnel() {
     },
   });
 
-  switch (funnel.step) {
-    case '주종선택': 
-      return <AlcoholStep onNext={(alcohol) => funnel.history.push('경험선택', { alcohol })} />
-    case '경험선택':
-      return <ExperienceStep onNext={(experience) => funnel.history.push('맛선택', { experience })} />
-    case '맛선택':
-      return <TasteStep onNext={(taste) => funnel.history.push('메모입력', { taste })} />
-    case '메모입력':
-  }
+  const handleSubmit = (context: 메모입력) => {
+    // TODO: 추천 API 호출 또는 결과 페이지로 이동
+    alert(`추천 요청이 완료되었습니다:\n${JSON.stringify(context, null, 2)}`);
+  };
 
+  switch (funnel.step) {
+    case '주종선택':
+      return <AlcoholStep onNext={(alcohol) => funnel.history.push('경험선택', { alcohol })} />;
+    case '경험선택':
+      return <ExperienceStep onNext={(experience) => funnel.history.push('맛선택', { experience })} />;
+    case '맛선택':
+      return <TasteStep onNext={(taste) => funnel.history.push('메모입력', { taste })} />;
+    case '메모입력':
+      return (
+        <MemoStep
+          onSubmit={(memo) => handleSubmit({ ...funnel.context, memo })}
+        />
+      );
+  }
 }
