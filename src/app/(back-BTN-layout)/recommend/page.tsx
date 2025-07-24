@@ -10,10 +10,15 @@ export default function Recommend() {
   const [progress, setProgress] = useState(25);
   const [step, setStep] = useState(1);
 
-  const _handleIncreaseProgress = () => {
+  const handleIncreaseProgress = () => {
     setProgress((p) => Math.min(p + 25, 100));
     setStep((s) => Math.min(s + 1, 4));
   };
+
+  const handleDecreaseProgress = () => {
+    setProgress((p) => Math.min(p - 25, 0));
+    setStep((s) => Math.min(s - 1, 0));
+  }
 
   useEffect(() => {
     setHeaderContent(
@@ -29,7 +34,7 @@ export default function Recommend() {
 
   return (
     <div className="mt-4">
-      <Funnel />
+      <Funnel onStepChange={handleIncreaseProgress} />
     </div>
   )
 }
