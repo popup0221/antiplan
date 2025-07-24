@@ -33,7 +33,7 @@ export default function Recommend() {
   }, [setHeaderContent, progress, step]);
 
   return (
-    <div className="mt-4">
+    <div className="mt-4 h-full">
       <Funnel onStepChange={handleIncreaseProgress} />
     </div>
   )

@@ -44,7 +44,7 @@ export default function ExperienceStep({ onNext }: Props) {
         ))}
       </RadioGroup>
 
-      <Button className="relative bottom-0" size="lg" onClick={() => selectedExperience && onNext(selectedExperience)} disabled={!selectedExperience}>
+      <Button className="fixed bottom-10 left-0 right-0 w-[90%] h-12 mx-auto" size="lg" onClick={() => selectedExperience && onNext(selectedExperience)} disabled={!selectedExperience}>
         다음
       </Button>
     </div>

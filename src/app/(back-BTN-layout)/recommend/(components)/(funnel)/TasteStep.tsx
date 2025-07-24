@@ -55,7 +55,7 @@ export default function TasteStep({ onNext }: Props) {
       </div>
 
       <Button
-        className="relative bottom-0"
+        className="fixed bottom-10 left-0 right-0 w-[90%] h-12 mx-auto"
         size="lg"
         onClick={() => onNext(selectedTastes)}
         disabled={selectedTastes.length === 0}

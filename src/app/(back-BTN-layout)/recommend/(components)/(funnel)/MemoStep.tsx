@@ -26,7 +26,7 @@ export default function MemoStep({ onSubmit }: Props) {
       />
 
       <Button
-        className="relative bottom-0"
+        className="fixed bottom-10 left-0 right-0 w-[90%] h-12 mx-auto"
         size="lg"
         onClick={() => onSubmit(memo || undefined)}
       >

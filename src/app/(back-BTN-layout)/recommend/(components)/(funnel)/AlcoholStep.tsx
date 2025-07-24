@@ -18,7 +18,7 @@ export default function AlcoholStep({ onNext }: Props) {
   const alcoholOptions = Object.entries(alcoholLiterals) as [Alcohol, string][];
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-8 h-full">
       <div className="flex flex-col gap-2">
         <h1 className="text-2xl font-bold">어떤 주종을 추천해드릴까요?</h1>
         <p className="text-gray-500">하나를 선택해주세요.</p>
@@ -44,7 +44,7 @@ export default function AlcoholStep({ onNext }: Props) {
         ))}
       </RadioGroup>
 
-      <Button className='relative bottom-0' size="lg" onClick={() => selectedAlcohol && onNext(selectedAlcohol)} disabled={!selectedAlcohol}>
+      <Button className="fixed bottom-10 left-0 right-0 w-[90%] h-12 mx-auto" size="lg" onClick={() => selectedAlcohol && onNext(selectedAlcohol)} disabled={!selectedAlcohol}>
         다음
       </Button>
     </div>
