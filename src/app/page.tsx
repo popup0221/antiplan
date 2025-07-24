@@ -13,7 +13,7 @@ export default function Home() {
         No plan ? Anti plan !
       </span>
   
-      <div className="flex flex-row-reverse relative h-40 gap-2">
+      <div className="flex flex-row-reverse relative h-43 gap-2">
         <span className="text-white text-xl font-semibold leading-relaxed text-start writing-vertical-rl text-orientation-mixed">
           계획없이 사는
         </span>
@@ -33,10 +33,10 @@ export default function Home() {
       </div>
 
       <div className="flex h-14 w-full items-center justify-center gap-3">
-        <Button variant="ghost" onClick={() => router.push('/recommend')}>
+        <Button variant="ghost" className="text-sm font-semibold" onClick={() => router.push('/recommend')}>
           추천받기
         </Button>
-        <Button variant="ghost" onClick={() => router.push('/order')}>
+        <Button variant="ghost" className="text-sm font-semibold" onClick={() => router.push('/order')}>
           주문하기
         </Button>
       </div>
