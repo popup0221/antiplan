@@ -40,7 +40,7 @@ export default function TasteStep({ onNext }: Props) {
             className={cn(
               'flex h-24 cursor-pointer items-center justify-center rounded-md text-lg bg-primary hover:bg-accent hover:text-accent-foreground',
               selectedTastes.includes(value) &&
-                'border border-white text-primary-foreground hover:bg-primary/90'
+                'border border-white text-primary-foreground'
             )}
           >
             <Checkbox

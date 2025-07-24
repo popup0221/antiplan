@@ -35,7 +35,7 @@ export default function ExperienceStep({ onNext }: Props) {
             htmlFor={value}
             className={cn(
               'flex h-24 cursor-pointer items-center justify-center rounded-md text-lg bg-primary hover:bg-accent hover:text-accent-foreground',
-              selectedExperience === value && 'border border-white text-primary-foreground hover:bg-primary/90',
+              selectedExperience === value && 'border border-white text-primary-foreground',
             )} 
           >
             <RadioGroupItem value={value} id={value} className="sr-only" />
