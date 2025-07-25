@@ -6,20 +6,21 @@ import { useHeader } from "../(contexts)/HeaderContext";
 import Funnel from "./(funnel)/(components)/Funnel";
 
 export default function Recommend() {
-  const { setHeaderContent } = useHeader();
-  const [progress, setProgress] = useState(25);
   const [step, setStep] = useState(1);
+  const [progress, setProgress] = useState(25);
+  const { setHeaderContent, setHandlePrevEvent } = useHeader();
 
-  const handleIncreaseProgress = () => {
-    setProgress((p) => Math.min(p + 25, 100));
-    setStep((s) => Math.min(s + 1, 4));
-  };
+  // useEffect(() => {
+  //   setHandlePrevEvent(() => {
+  //     setProgress((p) => Math.min(p - 25, 0));
+  //     setStep((s) => Math.min(s - 1, 0));
+  //   })
 
-  const _handleDecreaseProgress = () => {
-    setProgress((p) => Math.min(p - 25, 0));
-    setStep((s) => Math.min(s - 1, 0));
-  };
-
+  //   return () => {
+  //     setHandlePrevEvent(() => {});
+  //   }
+  // }, [])
+  
   useEffect(() => {
     setHeaderContent(
       <div className="flex items-center pr-4">
@@ -29,9 +30,17 @@ export default function Recommend() {
         </p>
       </div>,
     );
-    return () => setHeaderContent(null);
+
+    return () => {
+      setHeaderContent(null);
+    }
   }, [setHeaderContent, progress, step]);
 
+  const handleIncreaseProgress = () => {
+    setProgress((p) => Math.min(p + 25, 100));
+    setStep((s) => Math.min(s + 1, 4));
+  };
+  
   return (
     <div className="mt-4 h-full">
       <Funnel onStepChange={handleIncreaseProgress} />

@@ -8,9 +8,11 @@ import { useHeader } from '../(contexts)/HeaderContext';
 export default function Header() {
   const router = useRouter();
   const pathname = usePathname();
-  const { headerContent } = useHeader();
+  const { headerContent, handlePrevEvent } = useHeader();
 
-  const handleBack = () => {
+  const onClickPrevEvent = () => {
+    if (handlePrevEvent && typeof handlePrevEvent == 'function') handlePrevEvent();
+
     if (window.history.length > 1) {
       router.back();
     } else {
@@ -23,8 +25,7 @@ export default function Header() {
       {pathname !== '/' && (
         <Button
           variant="ghost"
-          size="sm"
-          onClick={handleBack}
+          onClick={onClickPrevEvent}
         >
           <Image
             className="dark:invert"

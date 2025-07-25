@@ -1,18 +1,21 @@
 'use client';
-import { createContext, useContext, useState } from 'react';
+import { createContext, use, useContext, useState } from 'react';
 
 type HeaderContextType = {
   headerContent: React.ReactNode;
   setHeaderContent: (content: React.ReactNode) => void;
+  handlePrevEvent: () => void;
+  setHandlePrevEvent: (handler: () => void) => void;
 };
 
 const HeaderContext = createContext<HeaderContextType | undefined>(undefined);
 
 export function HeaderProvider({ children }: { children: React.ReactNode }) {
   const [headerContent, setHeaderContent] = useState<React.ReactNode>(null);
+  const [handlePrevEvent, setHandlePrevEvent] = useState<() => void>(() => {});
 
   return (
-    <HeaderContext.Provider value={{ headerContent, setHeaderContent }}>
+    <HeaderContext.Provider value={{ headerContent, setHeaderContent, handlePrevEvent, setHandlePrevEvent }}>
       {children}
     </HeaderContext.Provider>
   );
