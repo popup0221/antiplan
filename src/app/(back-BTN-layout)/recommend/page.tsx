@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
 import { useEffect, useState } from "react";
 import { Progress } from "@/components/ui/progress";
 import { useHeader } from "../(contexts)/HeaderContext";
-import Funnel from "./(components)/(funnel)/Funnel";
+import Funnel from "./(funnel)/(components)/Funnel";
 
 export default function Recommend() {
   const { setHeaderContent } = useHeader();
@@ -15,10 +15,10 @@ export default function Recommend() {
     setStep((s) => Math.min(s + 1, 4));
   };
 
-  const handleDecreaseProgress = () => {
+  const _handleDecreaseProgress = () => {
     setProgress((p) => Math.min(p - 25, 0));
     setStep((s) => Math.min(s - 1, 0));
-  }
+  };
 
   useEffect(() => {
     setHeaderContent(
@@ -36,5 +36,5 @@ export default function Recommend() {
     <div className="mt-4 h-full">
       <Funnel onStepChange={handleIncreaseProgress} />
     </div>
-  )
+  );
 }

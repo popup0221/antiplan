@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 
 interface Props {
   onSubmit: (memo?: string) => void;
 }
 
 export default function MemoStep({ onSubmit }: Props) {
-  const [memo, setMemo] = useState('');
+  const [memo, setMemo] = useState("");
 
   return (
     <div className="flex flex-col gap-8">
@@ -26,7 +26,7 @@ export default function MemoStep({ onSubmit }: Props) {
       />
 
       <Button
-        className="fixed bottom-10 left-0 right-0 w-[90%] h-12 mx-auto"
+        className="fixed bottom-10 left-0 right-0 w-[90%] h-12 mx-auto rounded-md text-lg"
         size="lg"
         onClick={() => onSubmit(memo || undefined)}
       >

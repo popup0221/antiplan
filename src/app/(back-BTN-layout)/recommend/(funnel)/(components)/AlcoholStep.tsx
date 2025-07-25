@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Label } from '@/components/ui/label';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import type { Alcohol } from './schemas';
-import { alcohol as alcoholLiterals } from './literals';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { cn } from "@/lib/utils";
+import { alcohol as alcoholLiterals } from "../literals";
+import type { Alcohol } from "../schemas";
 
 interface Props {
   onNext: (alcohol: Alcohol) => void;
@@ -25,7 +25,7 @@ export default function AlcoholStep({ onNext }: Props) {
       </div>
 
       <RadioGroup
-        value={selectedAlcohol ?? ''}
+        value={selectedAlcohol ?? ""}
         onValueChange={(value) => setSelectedAlcohol(value as Alcohol)}
         className="grid grid-cols-1 gap-4 sm:grid-cols-3"
       >
@@ -34,8 +34,8 @@ export default function AlcoholStep({ onNext }: Props) {
             key={value}
             htmlFor={value}
             className={cn(
-              'flex h-24 cursor-pointer items-center justify-center rounded-md text-lg bg-primary hover:bg-accent hover:text-accent-foreground',
-              selectedAlcohol === value && 'border border-white text-primary-foreground',
+              "flex h-24 cursor-pointer items-center justify-center rounded-md text-lg bg-primary hover:bg-accent hover:text-accent-foreground",
+              selectedAlcohol === value && "border border-white text-primary-foreground",
             )}
           >
             <RadioGroupItem value={value} id={value} className="sr-only" />
@@ -44,7 +44,12 @@ export default function AlcoholStep({ onNext }: Props) {
         ))}
       </RadioGroup>
 
-      <Button className="fixed bottom-10 left-0 right-0 w-[90%] h-12 mx-auto" size="lg" onClick={() => selectedAlcohol && onNext(selectedAlcohol)} disabled={!selectedAlcohol}>
+      <Button
+        className="fixed bottom-10 left-0 right-0 w-[90%] h-12 mx-auto rounded-md text-lg"
+        size="lg"
+        onClick={() => selectedAlcohol && onNext(selectedAlcohol)}
+        disabled={!selectedAlcohol}
+      >
         다음
       </Button>
     </div>

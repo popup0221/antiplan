@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Label } from '@/components/ui/label';
-import type { Taste } from './schemas';
-import { taste as tasteLiterals } from './literals';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils";
+import { taste as tasteLiterals } from "../literals";
+import type { Taste } from "../schemas";
 
 interface Props {
   onNext: (tastes: Taste) => void;
@@ -20,9 +20,7 @@ export default function TasteStep({ onNext }: Props) {
   const tasteOptions = Object.entries(tasteLiterals) as [TasteValue, string][];
 
   const handleToggleTaste = (taste: TasteValue) => {
-    setSelectedTastes((prev) =>
-      prev.includes(taste) ? prev.filter((t) => t !== taste) : [...prev, taste]
-    );
+    setSelectedTastes((prev) => (prev.includes(taste) ? prev.filter((t) => t !== taste) : [...prev, taste]));
   };
 
   return (
@@ -38,9 +36,8 @@ export default function TasteStep({ onNext }: Props) {
             key={value}
             htmlFor={value}
             className={cn(
-              'flex h-24 cursor-pointer items-center justify-center rounded-md text-lg bg-primary hover:bg-accent hover:text-accent-foreground',
-              selectedTastes.includes(value) &&
-                'border border-white text-primary-foreground'
+              "flex h-24 cursor-pointer items-center justify-center rounded-md text-lg bg-primary hover:bg-accent hover:text-accent-foreground",
+              selectedTastes.includes(value) && "border border-white text-primary-foreground",
             )}
           >
             <Checkbox
@@ -55,7 +52,7 @@ export default function TasteStep({ onNext }: Props) {
       </div>
 
       <Button
-        className="fixed bottom-10 left-0 right-0 w-[90%] h-12 mx-auto"
+        className="fixed bottom-10 left-0 right-0 w-[90%] h-12 mx-auto rounded-md text-lg"
         size="lg"
         onClick={() => onNext(selectedTastes)}
         disabled={selectedTastes.length === 0}
