@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Progress } from "@/components/ui/progress";
 import { useHeader } from "../(contexts)/HeaderContext";
 import Funnel from "./(funnel)/(components)/Funnel";
@@ -10,16 +10,18 @@ export default function Recommend() {
   const [progress, setProgress] = useState(25);
   const { setHeaderContent, setHandlePrevEvent } = useHeader();
 
-  // useEffect(() => {
-  //   setHandlePrevEvent(() => {
-  //     setProgress((p) => Math.min(p - 25, 0));
-  //     setStep((s) => Math.min(s - 1, 0));
-  //   })
+  const handlePrev = useCallback(() => {
+    setProgress((p) => Math.max(p - 25, 0));
+    setStep((s) => Math.max(s - 1, 0));
+  }, []);
 
-  //   return () => {
-  //     setHandlePrevEvent(() => {});
-  //   }
-  // }, [])
+  useEffect(() => {
+    setHandlePrevEvent(() => handlePrev);
+
+    return () => {
+      setHandlePrevEvent(() => () => {});
+    };
+  }, [setHandlePrevEvent, handlePrev]);
   
   useEffect(() => {
     setHeaderContent(

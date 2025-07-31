@@ -11,7 +11,7 @@ export default function Header() {
   const { headerContent, handlePrevEvent } = useHeader();
 
   const onClickPrevEvent = () => {
-    if (handlePrevEvent && typeof handlePrevEvent == 'function') handlePrevEvent();
+    handlePrevEvent();
 
     if (window.history.length > 1) {
       router.back();
