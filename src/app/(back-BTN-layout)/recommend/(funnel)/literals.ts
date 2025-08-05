@@ -13,12 +13,16 @@ export const experience: Record<Experience, string> = {
 } as const;
 
 export const taste: Record<Taste[number], string> = {
+  bitter: "쓴 맛",
+  sweet: "단 맛",
+  sour: "신 맛",
+  milky: "밀키함",
+  fruity: "과일맛",
+  coffee: "커피",
+  herbal: "허브",
+  cinnamon: "시나몬",
+  chocolate: "초코",
   smoky: "스모키",
-  spicy: "스파이시",
-  fruity: "프루티",
-  sweet: "스위트",
-  dry: "드라이",
-  floral: "플로럴",
 } as const;
 
 export const proof: Record<Proof, string> = {
