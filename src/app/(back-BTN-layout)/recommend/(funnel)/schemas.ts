@@ -8,28 +8,40 @@ export const BaseSchema = z.enum(['whisky', 'noplan', 'rum', 'tequila', 'vodka',
 
 export const 주종선택_Schema = z.object({
   alcohol: AlcoholSchema.optional(),
-  experience: ExperienceSchema.optional(),
+  // experience: ExperienceSchema.optional(),
+  proof: ProofSchema.optional(),
   taste: TasteSchema.optional(),
   memo: z.string().optional(),
 });
 
 export const 경험선택_Schema = z.object({
-  alcohol: AlcoholSchema, // 필수
+  alcohol: AlcoholSchema,
   experience: ExperienceSchema.optional(),
+  proof: ProofSchema.optional(),
+  taste: TasteSchema.optional(),
+  memo: z.string().optional(),
+});
+
+export const 도수선택_Schema = z.object({
+  alcohol: AlcoholSchema,
+  // experience: ExperienceSchema,
+  proof: ProofSchema.optional(),
   taste: TasteSchema.optional(),
   memo: z.string().optional(),
 });
 
 export const 맛선택_Schema = z.object({
   alcohol: AlcoholSchema,
-  experience: ExperienceSchema,
+  // experience: ExperienceSchema,
+  proof: ProofSchema,
   taste: TasteSchema.optional(),
   memo: z.string().optional(),
 });
 
 export const 메모입력_Schema = z.object({
   alcohol: AlcoholSchema,
-  experience: ExperienceSchema,
+  // experience: ExperienceSchema,
+  proof: ProofSchema,
   taste: TasteSchema,
   memo: z.string().optional(),
 });

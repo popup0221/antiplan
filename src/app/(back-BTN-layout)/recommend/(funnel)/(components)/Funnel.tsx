@@ -1,12 +1,12 @@
 "use client";
 
 import { useFunnel } from "@use-funnel/browser";
-import type { 경험선택, 맛선택, 메모입력, 주종선택 } from "../context";
-import { 경험선택_Schema, 맛선택_Schema, 메모입력_Schema, 주종선택_Schema } from "../schemas";
+import type { 맛선택, 메모입력, 주종선택, 도수선택 } from "../context";
+import { 맛선택_Schema, 메모입력_Schema, 주종선택_Schema, 도수선택_Schema } from "../schemas";
 import AlcoholStep from "./AlcoholStep";
-import ExperienceStep from "./ExperienceStep";
 import MemoStep from "./MemoStep";
 import TasteStep from "./TasteStep";
+import ProofStep from "./ProofStep";
 
 interface FunnelProps {
   onStepChange: () => void;
@@ -15,14 +15,16 @@ interface FunnelProps {
 export default function Funnel({ onStepChange }: FunnelProps) {
   const funnel = useFunnel<{
     주종선택: 주종선택;
-    경험선택: 경험선택;
+    // 경험선택: 경험선택;
+    도수선택: 도수선택;
     맛선택: 맛선택;
     메모입력: 메모입력;
   }>({
     id: "recommend alcohol",
     steps: {
       주종선택: { parse: 주종선택_Schema.parse },
-      경험선택: { parse: 경험선택_Schema.parse },
+      // 경험선택: { parse: 경험선택_Schema.parse },
+      도수선택: { parse: 도수선택_Schema.parse },
       맛선택: { parse: 맛선택_Schema.parse },
       메모입력: { parse: 메모입력_Schema.parse },
     },
@@ -36,35 +38,48 @@ export default function Funnel({ onStepChange }: FunnelProps) {
     alert(`추천 요청이 완료되었습니다:\n${JSON.stringify(context, null, 2)}`);
   };
 
-  switch (funnel.step) {
-    case "주종선택":
-      return (
+  return (
+    <funnel.Render
+      주종선택={({ history }) => (
         <AlcoholStep
           onNext={(alcohol) => {
             onStepChange();
-            funnel.history.push("경험선택", { alcohol });
+            history.push("도수선택", { alcohol });
           }}
         />
-      );
-    case "경험선택":
-      return (
-        <ExperienceStep
-          onNext={(experience) => {
+      )}
+
+      // 경험선택={({ history }) => (
+      //   <ExperienceStep
+      //     onNext={(experience) => {
+      //       onStepChange();
+      //       history.push("도수선택", { experience });
+      //     }}
+      //   />
+      // )}
+
+      도수선택={({ history }) => (
+        <ProofStep
+          onNext={(proof) => {
             onStepChange();
-            funnel.history.push("맛선택", { experience });
+            history.push("맛선택", { proof });
           }}
         />
-      );
-    case "맛선택":
-      return (
+      )}
+
+      맛선택={({ history }) => (
         <TasteStep
           onNext={(taste) => {
             onStepChange();
-            funnel.history.push("메모입력", { taste });
+            history.push("메모입력", { taste });
           }}
         />
-      );
-    case "메모입력":
-      return <MemoStep onSubmit={(memo) => handleSubmit({ ...funnel.context, memo })} />;
-  }
+      )}
+
+      메모입력={({ context }) => (
+        <MemoStep onSubmit={(memo) => handleSubmit({ ...context, memo })} />
+      )}
+    />
+  )
+
 }
