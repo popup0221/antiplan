@@ -28,7 +28,7 @@ export default function Recommend() {
       <div className="flex items-center pr-4">
         <Progress className="mr-4" value={progress} />
         <p>
-          {step}/{4}
+          {step}/{5}
         </p>
       </div>,
     );
