@@ -11,6 +11,7 @@ export const 주종선택_Schema = z.object({
   // experience: ExperienceSchema.optional(),
   proof: ProofSchema.optional(),
   taste: TasteSchema.optional(),
+  base: BaseSchema.optional(),
   memo: z.string().optional(),
 });
 
@@ -19,6 +20,7 @@ export const 경험선택_Schema = z.object({
   experience: ExperienceSchema.optional(),
   proof: ProofSchema.optional(),
   taste: TasteSchema.optional(),
+  base: BaseSchema.optional(),
   memo: z.string().optional(),
 });
 
@@ -27,6 +29,7 @@ export const 도수선택_Schema = z.object({
   // experience: ExperienceSchema,
   proof: ProofSchema.optional(),
   taste: TasteSchema.optional(),
+  base: BaseSchema.optional(),
   memo: z.string().optional(),
 });
 
@@ -35,14 +38,25 @@ export const 맛선택_Schema = z.object({
   // experience: ExperienceSchema,
   proof: ProofSchema,
   taste: TasteSchema.optional(),
+  base: BaseSchema.optional(),
   memo: z.string().optional(),
 });
+
+export const 기주선택_Schema = z.object({
+    alcohol: AlcoholSchema,
+  // experience: ExperienceSchema,
+  proof: ProofSchema,
+  taste: TasteSchema,
+  base: BaseSchema.optional(),
+  memo: z.string().optional(),
+})
 
 export const 메모입력_Schema = z.object({
   alcohol: AlcoholSchema,
   // experience: ExperienceSchema,
   proof: ProofSchema,
   taste: TasteSchema,
+  base: BaseSchema,
   memo: z.string().optional(),
 });
 

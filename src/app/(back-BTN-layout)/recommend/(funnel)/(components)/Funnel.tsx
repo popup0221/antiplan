@@ -1,11 +1,12 @@
 "use client";
 
 import { useFunnel } from "@use-funnel/browser";
-import type { 맛선택, 메모입력, 주종선택, 도수선택 } from "../context";
-import { 맛선택_Schema, 메모입력_Schema, 주종선택_Schema, 도수선택_Schema } from "../schemas";
+import type { 주종선택, 도수선택, 맛선택, 기주선택, 메모입력 } from "../context";
+import { 주종선택_Schema, 도수선택_Schema, 맛선택_Schema, 기주선택_Schema, 메모입력_Schema } from "../schemas";
+import BaseStep from "./BaseStep";
 import AlcoholStep from "./AlcoholStep";
-import MemoStep from "./MemoStep";
 import TasteStep from "./TasteStep";
+import MemoStep from "./MemoStep";
 import ProofStep from "./ProofStep";
 
 interface FunnelProps {
@@ -18,6 +19,7 @@ export default function Funnel({ onStepChange }: FunnelProps) {
     // 경험선택: 경험선택;
     도수선택: 도수선택;
     맛선택: 맛선택;
+    기주선택: 기주선택;
     메모입력: 메모입력;
   }>({
     id: "recommend alcohol",
@@ -26,6 +28,7 @@ export default function Funnel({ onStepChange }: FunnelProps) {
       // 경험선택: { parse: 경험선택_Schema.parse },
       도수선택: { parse: 도수선택_Schema.parse },
       맛선택: { parse: 맛선택_Schema.parse },
+      기주선택: { parse: 기주선택_Schema.parse },
       메모입력: { parse: 메모입력_Schema.parse },
     },
     initial: {
@@ -71,7 +74,16 @@ export default function Funnel({ onStepChange }: FunnelProps) {
         <TasteStep
           onNext={(taste) => {
             onStepChange();
-            history.push("메모입력", { taste });
+            history.push("기주선택", { taste });
+          }}
+        />
+      )}
+
+      기주선택={({ history }) => (
+        <BaseStep
+          onNext={(base) => {
+            onStepChange();
+            history.push("메모입력", { base });
           }}
         />
       )}
