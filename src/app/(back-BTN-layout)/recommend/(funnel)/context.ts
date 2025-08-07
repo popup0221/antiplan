@@ -1,3 +1,5 @@
+// 각 funnel step에서 입력한 값을 저장한 상태
+
 import type { Alcohol, Taste, Proof } from "./schemas";
 
 export type 주종선택 = { 

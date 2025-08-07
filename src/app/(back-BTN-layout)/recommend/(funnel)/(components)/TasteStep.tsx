@@ -30,7 +30,7 @@ export default function TasteStep({ onNext }: Props) {
         <p className="text-gray-500">여러 개 선택할 수 있어요.</p>
       </div>
 
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+      <div className="grid grid-cols-3 gap-4">
         {tasteOptions.map(([value, label]) => (
           <Label
             key={value}
