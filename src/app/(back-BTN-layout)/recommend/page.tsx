@@ -11,7 +11,7 @@ export default function Recommend() {
   const { setHeaderContent, setHandlePrevEvent } = useHeader();
 
   const handlePrev = useCallback(() => {
-    setProgress((p) => Math.max(p - 25, 0));
+    setProgress((p) => Math.max(p - 20, 0));
     setStep((s) => Math.max(s - 1, 0));
   }, []);
 
@@ -39,8 +39,8 @@ export default function Recommend() {
   }, [setHeaderContent, progress, step]);
 
   const handleIncreaseProgress = () => {
-    setProgress((p) => Math.min(p + 25, 100));
-    setStep((s) => Math.min(s + 1, 4));
+    setProgress((p) => Math.min(p + 20, 100));
+    setStep((s) => Math.min(s + 1, 5));
   };
   
   return (
